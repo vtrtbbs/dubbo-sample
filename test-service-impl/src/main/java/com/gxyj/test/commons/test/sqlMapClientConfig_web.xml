@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>	
+	<dataSources>	
+        <dataSource type="JNDI" id="ds_baihe_jndi">
+            <property name="DataSource" value="java:Service_Sqlserver_Baihe"/>
+        </dataSource>
+    
+	</dataSources>
+	
+	<sqlMapClients>
+		<transactionManager type="JDBC" commitRequired="true" id="profile_SqlMapClient" >
+        	<dataSource>ds_baihe_jndi</dataSource>
+        	<configLocation>resource/simpleprofile/sqlMapConfig.xml</configLocation>
+   	 	</transactionManager>
+	</sqlMapClients>
+	
+	<sqlMapClientTemplates>
+		<sqlMapClientTemplate id="profile_SqlMapClientTemplate" sqlMapClient="profile_SqlMapClient"/>
+	</sqlMapClientTemplates>
+   
+    <handlers>
+    	<handler id="userProfileHandler" class="com.baihe.profile.handler.UserProfileHandler" template="profile_SqlMapClientTemplate" />
+    	
+    	<handler id="simpleUserProfileHandler" class="com.baihe.profile.handler.SimpleUserProfileHandler" template="profile_SqlMapClientTemplate" />
+    </handlers>
+   
+     <caches>
+    	<cache id="userProfileCache" class="com.baihe.commons.cache.DataCache" cacheName="UserProfile" type="userprofile" expiredTime="0"/>
+    	
+    	<cache id="simpleUserProfileCache" class="com.baihe.commons.cache.DataCache" cacheName="UserProfile" type="simpleuserprofile" expiredTime="0"/>
+    </caches>
+    
+    <services>
+    	<service id="userProfileService" class="com.baihe.profile.service.UserProfileService" handler="userProfileHandler" cache="userProfileCache"/>
+    	
+    	<service id="simpleUserProfileService" class="com.baihe.profile.service.SimpleUserProfileService" handler="simpleUserProfileHandler" cache="simpleUserProfileCache"/>
+    </services>
+</configs>

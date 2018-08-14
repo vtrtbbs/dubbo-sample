@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+    
+    <dubbo:application name="${dubbo.application.name}"/>
+    
+    <dubbo:registry protocol="zookeeper" address="${zk.address}" />
+	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" threadpool="cached" threads="1000" accepts="2000" />
+	
+	<!-- 发布的dubbo服务 -->
+	<dubbo:service interface="com.gxyj.test.service.TestService" ref="testService" timeout="10000" />
+	<dubbo:service interface="com.gxyj.test.service.ImageService" ref="imageService" timeout="10000" />
+	<dubbo:service interface="com.gxyj.test.service.UserService" ref="userService" timeout="10000" />	
+</beans>

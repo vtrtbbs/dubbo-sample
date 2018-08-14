@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 
+	<bean class="com.gxyj.test.commons.spring.ServiceConfigureInit">
+		<property name="fileNames">
+			<list>
+				<value>newservice.properties</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+	
+	<bean class="com.gxyj.test.commons.handler.DefaultServiceInit" init-method="initService">
+		<property name="configResourceList">
+			<list>
+				<value>sqlMapClientConfig_web.xml</value>
+			</list>
+		</property>
+		<property name="wrapResourceList">
+			<list>
+				<value>wrap.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userProfileService" class="com.gxyj.test.commons.spring.ContextFactoryBean">
+		<property name="contextId" value="userProfileService"/>
+	</bean>
+	
+	<bean id="simpleUserProfileService" class="com.gxyj.test.commons.spring.ContextFactoryBean">
+		<property name="contextId" value="simpleUserProfileService"/>
+	</bean>
+
+</beans>

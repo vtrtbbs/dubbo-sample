@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+	
+	<wraps>
+	<!--	<wrap id="userBasicInfoWrap" class="com.baihe.profile.handler.UserBasicInfoWrap">
+			<property name="" value=""/>
+		</wrap> -->
+	</wraps>
+	
+	<wrapManage>
+		
+		<register beanName="com.baihe.profile.pojo.SimpleUserProfile" wrapClassName="com.baihe.profile.handler.SimpleUserProfileWrap" type="new"/>
+		<register beanName="com.baihe.profile.pojo.UserProfile"  wrapClassName="com.baihe.profile.handler.UserProfileWrap" type="new"/>
+		
+		<!--
+		<register beanName="com.baihe.profile.pojo.UserBasicInfo" wrapId="userBasicInfoWrap" type="spring"/>
+		<register beanName="com.baihe.profile.pojo.UserSupplyInfo" wrapId="userSupplyInfoWrap" type="spring" />
+		-->
+		<!--
+		<register beanName="com.baihe.profile.pojo.SimpleUserProfile" wrapId="simpleUserProfileWrap" type="spring" />
+		<register beanName="com.baihe.profile.pojo.UserProfile" wrapId="userProfileWrap" type="spring" />
+		-->
+	</wrapManage>
+</configs>

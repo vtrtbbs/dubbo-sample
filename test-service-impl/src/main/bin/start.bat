@@ -1,0 +1,1 @@
+java  -Ddisconf.env=local -Ddisconf.version=1.0.0 -Ddisconf.app=mircoservice-demo -Ddisconf.enable.remote.conf=true  -Ddisconf.conf_server_host=10.1.102.234:8090  -Xms1g -Xmx2g -jar test-service-impl-0.0.1-SNAPSHOT.jar
